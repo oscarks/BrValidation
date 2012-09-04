@@ -1,0 +1,8 @@
+Br Validation
+
+Implements same validations in grails constraints for units used in application from Brazil: CPF, CNPJ and CEP.
+CPF - Cadastro de Pessoa Física (like a Security Social Numeber in USA)
+CNPJ - Cadastro Nacional de Pessoa Juridica 
+CEP - Postal Code to Brazilian territory
+
+
