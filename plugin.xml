@@ -1,0 +1,20 @@
+<plugin name='br-validation' version='0.2' grailsVersion='1.1.1 &gt; *'>
+  <author>Oscar Konno Sampaio</author>
+  <authorEmail>oscarks@gmail.com</authorEmail>
+  <title>Br Validation Plugin</title>
+  <description>Implements gorm validation to same documents 
+(CPF and CNPJ) and codes formats (CEP) used in Brazil 
+</description>
+  <documentation>http://grails.org/plugin/br-validation</documentation>
+  <type>BrValidationGrailsPlugin</type>
+  <resources />
+  <repositories>
+    <repository name='grailsCentral' url='http://grails.org/plugins' />
+    <repository name='http://repo.grails.org/grails/core' url='http://repo.grails.org/grails/core/' />
+    <repository name='mavenCentral' url='http://repo1.maven.org/maven2/' />
+  </repositories>
+  <dependencies />
+  <plugins />
+  <runtimePluginRequirements />
+  <behavior />
+</plugin>
