@@ -1,3 +1,10 @@
+import grails.plugins.brvalidation.constraint.CepConstraint
+import grails.plugins.brvalidation.constraint.CnpjConstraint
+import grails.plugins.brvalidation.constraint.CpfCnpjConstraint;
+import grails.plugins.brvalidation.constraint.CpfConstraint
+
+import org.codehaus.groovy.grails.validation.ConstrainedProperty
+
 /*
  * Copyright (c) 2012 the original author or authors.
  *
@@ -31,8 +38,8 @@ class BrValidationGrailsPlugin {
     def dependsOn = [:]
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
-        "grails-app/views/error.gsp"
-    ]
+		'grails-app/domain/**'
+	]
 
     // TODO Fill in these fields
     def title = "Br Validation Plugin" // Headline display name of the plugin
@@ -67,6 +74,7 @@ class BrValidationGrailsPlugin {
     }
 
     def doWithSpring = {
+		ConstrainedProperty.registerNewConstraint(CpfCnpjConstraint.CPF_CNPJ_CONSTRAINT,CnpjConstraint.class);
 		ConstrainedProperty.registerNewConstraint(CnpjConstraint.CNPJ_CONSTRAINT,CnpjConstraint.class);
 		ConstrainedProperty.registerNewConstraint(CpfConstraint.CPF_CONSTRAINT,CpfConstraint.class);
 		ConstrainedProperty.registerNewConstraint(CepConstraint.POSTAL_CODE_CONSTRAINT,CepConstraint.class);

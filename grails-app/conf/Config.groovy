@@ -1,4 +1,16 @@
+import grails.plugins.brvalidation.constraint.CepConstraint
+import grails.plugins.brvalidation.constraint.CnpjConstraint
+import grails.plugins.brvalidation.constraint.CpfCnpjConstraint
+import grails.plugins.brvalidation.constraint.CpfConstraint
+
+import org.codehaus.groovy.grails.validation.ConstrainedProperty
+
 // configuration for plugin testing - will not be included in the plugin zip
+
+ConstrainedProperty.registerNewConstraint(CpfCnpjConstraint.CPF_CNPJ_CONSTRAINT, CpfCnpjConstraint.class);
+ConstrainedProperty.registerNewConstraint(CnpjConstraint.CNPJ_CONSTRAINT,CnpjConstraint.class);
+ConstrainedProperty.registerNewConstraint(CpfConstraint.CPF_CONSTRAINT,CpfConstraint.class);
+ConstrainedProperty.registerNewConstraint(CepConstraint.POSTAL_CODE_CONSTRAINT,CepConstraint.class);
 
 log4j = {
     // Example of changing the log pattern for the default console
