@@ -14,10 +14,6 @@
  * limitations under the License.
  */
 
-import grails.plugins.brvalidation.constraints.CnpjConstraint
-import grails.plugins.brvalidation.constraints.CpfConstraint
-import grails.plugins.brvalidation.constraints.CepConstraint
-import org.codehaus.groovy.grails.validation.ConstrainedProperty
 
  /**
   * BrValidation Plugin. Implements gorm validation to same documents 
