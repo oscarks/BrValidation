@@ -1,24 +1,7 @@
-import grails.plugins.brvalidation.constraint.CepConstraint
-import grails.plugins.brvalidation.constraint.CnpjConstraint
-import grails.plugins.brvalidation.constraint.CpfCnpjConstraint
-import grails.plugins.brvalidation.constraint.CpfConstraint
-
-import org.codehaus.groovy.grails.validation.ConstrainedProperty
-
-// configuration for plugin testing - will not be included in the plugin zip
-
-ConstrainedProperty.registerNewConstraint(CpfCnpjConstraint.CPF_CNPJ_CONSTRAINT, CpfCnpjConstraint.class);
-ConstrainedProperty.registerNewConstraint(CnpjConstraint.CNPJ_CONSTRAINT,CnpjConstraint.class);
-ConstrainedProperty.registerNewConstraint(CpfConstraint.CPF_CONSTRAINT,CpfConstraint.class);
-ConstrainedProperty.registerNewConstraint(CepConstraint.POSTAL_CODE_CONSTRAINT,CepConstraint.class);
+grails.views.default.codec="none" // none, html, base64
+grails.views.gsp.encoding="UTF-8"
 
 log4j = {
-    // Example of changing the log pattern for the default console
-    // appender:
-    //
-    //appenders {
-    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-    //}
 
     error  'org.codehaus.groovy.grails.web.servlet',  //  controllers
            'org.codehaus.groovy.grails.web.pages', //  GSP
@@ -34,5 +17,3 @@ log4j = {
 
     warn   'org.mortbay.log'
 }
-grails.views.default.codec="none" // none, html, base64
-grails.views.gsp.encoding="UTF-8"

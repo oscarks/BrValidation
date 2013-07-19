@@ -1,10 +1,19 @@
 package grails.plugins.brvalidation
 
+import grails.plugins.brvalidation.constraint.CnpjConstraint
 import grails.test.mixin.TestFor
+
+import org.codehaus.groovy.grails.validation.ConstrainedProperty
+import org.junit.BeforeClass
 
 @TestFor(Person)
 class CnpjTests {
     
+	@BeforeClass
+	static void initConstraint() {
+		ConstrainedProperty.registerNewConstraint(CnpjConstraint.CNPJ_CONSTRAINT, CnpjConstraint.class)
+	}
+	
     void testCpfBoth() {		
 		config.grails.plugins.brValidation.validation.type = "both"
 		
