@@ -26,34 +26,46 @@ class CpfCnpjConstraint extends AbstractConstraint {
 
 		super.setParameter(constraintParameter);
 	}
+	
+	private def isAllCharEquals(def str) {
+		def c  = str[0] 
+		for (def i in str) {
+			if (c != i) return false				
+		}		
+		return true
+	}
 
 	protected void processValidate(Object target, Object propertyValue, Errors errors) {						
 		def code
 		def valid
 		def str = propertyValue as String
 		
-		if (StringUtils.isNotEmpty(str)) {		
-			switch(verifyType()) {
-				case "cpf":
-					valid = verifyFormat(str, 11)
-					code = CPF_CONSTRAINT
-					break
-				case "cnpj": 	
-					valid = verifyFormat(str, 14)
-					code = CNPJ_CONSTRAINT
-					break
-				default:
-					valid = verifyFormat(str, 11) || verifyFormat(str, 14)
-			}									
-			
-			str = str.replaceAll("\\W", "")
-			
-			if (valid) {															
-				if (str.size() == 11)
-					valid = validateCpf(str)
-				else if (str.size() == 14)
-					valid = validateCnpj(str)
-			}
+		if (StringUtils.isNotEmpty(str)) {	
+			if (isAllCharEquals(str))
+				valid = false
+			else {
+				switch(verifyType()) {
+					case "cpf":
+						valid = verifyFormat(str, 11)
+						code = CPF_CONSTRAINT
+						break
+					case "cnpj":
+						valid = verifyFormat(str, 14)
+						code = CNPJ_CONSTRAINT
+						break
+					default:
+						valid = verifyFormat(str, 11) || verifyFormat(str, 14)
+				}
+
+				str = str.replaceAll("\\W", "")
+
+				if (valid) {
+					if (str.size() == 11)
+						valid = validateCpf(str)
+					else if (str.size() == 14)
+						valid = validateCnpj(str)
+				}
+			}					
 		}
 		
 		if (!valid) {

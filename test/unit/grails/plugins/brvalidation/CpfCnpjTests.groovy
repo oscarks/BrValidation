@@ -51,6 +51,12 @@ class CpfCnpjTests {
 		
 		person.cpfcnpj = "94.107.697\\0001-94"
 		assert !person.validate()
+		
+		person.cpfcnpj = "11111111111111"
+		assert !person.validate()
+		
+		person.cpfcnpj = "22222222222"
+		assert !person.validate()
 				
     }
 	
