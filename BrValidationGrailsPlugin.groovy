@@ -30,38 +30,31 @@ import org.codehaus.groovy.grails.validation.ConstrainedProperty
   * @since 0.1
   */
 class BrValidationGrailsPlugin {
-    // the plugin version
     def version = "0.3"
-    // the version or versions of Grails the plugin is designed for
     def grailsVersion = "1.1.1 > *"
-    // the other plugins this plugin depends on
     def dependsOn = [:]
-    // resources that are excluded from plugin packaging
+	   
     def pluginExcludes = [
 		'grails-app/domain/**'
 	]
 
-    // TODO Fill in these fields
     def title = "Br Validation Plugin" // Headline display name of the plugin
     def author = "Oscar Konno Sampaio"
     def authorEmail = "oscarks@gmail.com"
     def description = '''Implements gorm validation to same documents 
 (CPF and CNPJ) and codes formats (CEP) used in Brazil 
 '''
-
-    // URL to the plugin's documentation
     def documentation = "http://grails.org/plugin/br-validation"
 
-    // Extra (optional) plugin metadata
-
-    // License: one of 'APACHE', 'GPL2', 'GPL3'
     def license = "APACHE"
-
-    // Details of company behind the plugin (if there is one)
-    def organization = [ name: "Acception", url: "http://www.acception.com/" ]
-
-    // Any additional developers beyond the author specified above.
-    def developers = [ [ name: "Oscar Konno", email: "oscarks@gmail.com" ]]
+	
+	def issueManagement = [system: "github", url: "https://github.com/oscarks/BrValidation/issues"]
+	def scm = [ url: "https://github.com/oscarks/BrValidation" ]
+       
+    def developers = [ 
+		[ name: "Oscar Konno", email: "oscarks@gmail.com" ],
+		[ name: "Leandro G. Gehlen", email: "leandrogehlen@gmail.com" ]
+	]
 
     // Location of the plugin's issue tracker.
 //    def issueManagement = [ system: "JIRA", url: "http://jira.grails.org/browse/GPMYPLUGIN" ]
