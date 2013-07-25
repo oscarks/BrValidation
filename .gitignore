@@ -5,8 +5,8 @@
 
 # Temporary Build
 /target
-/target-eclipse 
- 
+/target-eclipse
+
 # Logs
 /stacktrace.log
 /test/reports
@@ -14,3 +14,6 @@
 
 # Plugin release file
 /*.zip
+/plugin.xml
+
+/web-app

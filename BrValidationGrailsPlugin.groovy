@@ -22,84 +22,36 @@ import org.codehaus.groovy.grails.validation.ConstrainedProperty
  */
 
 
- /**
-  * BrValidation Plugin. Implements gorm validation to same documents 
-  * (CPF and CNPJ) and codes formats (CEP) used in Brazil 
-  *
-  * @author Oscar Konno Sampaio (oscarks@gmail.com)
-  * @since 0.1
-  */
+/**
+ * BrValidation Plugin. Implements gorm validation to same documents
+ * (CPF and CNPJ) and codes formats (CEP) used in Brazil
+ *
+ * @author Oscar Konno Sampaio (oscarks@gmail.com)
+ */
 class BrValidationGrailsPlugin {
-    // the plugin version
-    def version = "0.3"
-    // the version or versions of Grails the plugin is designed for
-    def grailsVersion = "1.1.1 > *"
-    // the other plugins this plugin depends on
-    def dependsOn = [:]
-    // resources that are excluded from plugin packaging
-    def pluginExcludes = [
+	def version = "0.3"
+	def grailsVersion = "1.1.1 > *"
+	def pluginExcludes = [
 		'grails-app/domain/**'
 	]
 
-    // TODO Fill in these fields
-    def title = "Br Validation Plugin" // Headline display name of the plugin
-    def author = "Oscar Konno Sampaio"
-    def authorEmail = "oscarks@gmail.com"
-    def description = '''Implements gorm validation to same documents 
-(CPF and CNPJ) and codes formats (CEP) used in Brazil 
+	def title = "Br Validation Plugin"
+	def description = '''Implements gorm validation to same documents
+(CPF and CNPJ) and codes formats (CEP) used in Brazil
 '''
 
-    // URL to the plugin's documentation
-    def documentation = "http://grails.org/plugin/br-validation"
+	def documentation = "http://grails.org/plugin/br-validation"
 
-    // Extra (optional) plugin metadata
+	def license = "APACHE"
+	def organization = [ name: "Acception", url: "http://www.acception.com/" ]
+	def developers = [ [ name: "Oscar Konno Sampaio", email: "oscarks@gmail.com" ]]
+	def issueManagement = [ system: "GITHUB", url: "https://github.com/oscarks/BrValidation/issues" ]
+	def scm = [ url: 'https://github.com/oscarks/BrValidation']
 
-    // License: one of 'APACHE', 'GPL2', 'GPL3'
-    def license = "APACHE"
-
-    // Details of company behind the plugin (if there is one)
-    def organization = [ name: "Acception", url: "http://www.acception.com/" ]
-
-    // Any additional developers beyond the author specified above.
-    def developers = [ [ name: "Oscar Konno", email: "oscarks@gmail.com" ]]
-
-    // Location of the plugin's issue tracker.
-//    def issueManagement = [ system: "JIRA", url: "http://jira.grails.org/browse/GPMYPLUGIN" ]
-
-    // Online location of the plugin's browseable source code.
-//    def scm = [ url: "http://svn.codehaus.org/grails-plugins/" ]
-
-    def doWithWebDescriptor = { xml ->
-        // TODO Implement additions to web.xml (optional), this event occurs before
-    }
-
-    def doWithSpring = {
-		ConstrainedProperty.registerNewConstraint(CpfCnpjConstraint.CPF_CNPJ_CONSTRAINT, CpfCnpjConstraint.class)
-		ConstrainedProperty.registerNewConstraint(CnpjConstraint.CNPJ_CONSTRAINT,CnpjConstraint.class)
-		ConstrainedProperty.registerNewConstraint(CpfConstraint.CPF_CONSTRAINT,CpfConstraint.class)
-		ConstrainedProperty.registerNewConstraint(CepConstraint.POSTAL_CODE_CONSTRAINT,CepConstraint.class)
-    }
-
-    def doWithDynamicMethods = { ctx ->
-        // TODO Implement registering dynamic methods to classes (optional)
-    }
-
-    def doWithApplicationContext = { applicationContext ->
-        // TODO Implement post initialization spring config (optional)		
-    }
-
-    def onChange = { event ->
-        // TODO Implement code that is executed when any artefact that this plugin is
-        // watching is modified and reloaded. The event contains: event.source,
-        // event.application, event.manager, event.ctx, and event.plugin.
-    }
-
-    def onConfigChange = { event ->
-        // TODO Implement code that is executed when the project configuration changes.
-        // The event is the same as for 'onChange'.
-    }
-
-    def onShutdown = { event ->
-        // TODO Implement code that is executed when the application shuts down (optional)
-    }
+	def doWithSpring = {
+		ConstrainedProperty.registerNewConstraint(CpfCnpjConstraint.CPF_CNPJ_CONSTRAINT, CpfCnpjConstraint)
+		ConstrainedProperty.registerNewConstraint(CnpjConstraint.CNPJ_CONSTRAINT,CnpjConstraint)
+		ConstrainedProperty.registerNewConstraint(CpfConstraint.CPF_CONSTRAINT,CpfConstraint)
+		ConstrainedProperty.registerNewConstraint(CepConstraint.POSTAL_CODE_CONSTRAINT,CepConstraint)
+	}
 }
