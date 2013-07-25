@@ -16,9 +16,9 @@
  
 package grails.plugins.brvalidation.util
 
-import org.springframework.context.ApplicationContext;
-import org.codehaus.groovy.grails.web.context.ServletContextHolder;
-import org.codehaus.groovy.grails.web.servlet.GrailsApplicationAttributes;
+import grails.util.Holders
+
+
 
 /**
   * Class with same util methods to access config variable.
@@ -27,19 +27,15 @@ import org.codehaus.groovy.grails.web.servlet.GrailsApplicationAttributes;
   * @since 0.1
   */
 class Util {
-	public static ApplicationContext getApplicationContext() {
-		return (ApplicationContext) ServletContextHolder.getServletContext().getAttribute(GrailsApplicationAttributes.APPLICATION_CONTEXT);
-	}
-	static def getGrailsApplication() {
-		getApplicationContext().getBean('grailsApplication');
+			
+	static def getConfig() {
+		Holders.config.grails.plugins.brValidation
 	}
 	
 	static def getValidationFormat() {
-		def vt=grailsApplication.config.grails.plugins.brValidation.validation.type
+		def vt = getConfig().validation.type ?: 'both' 
 		if (vt && !vt.toLowerCase() in ['masked','unmasked','both']) 
-			throw new RuntimeException("The type of validations defined in Config.groovy is invalid. Possibles values: 'masked', 'unmasked' and 'both'")
-		// Set the default format (both) if none is defined
-		if (!vt) vt='both'
-		vt
+			throw new RuntimeException("The type of validations defined in Config.groovy is invalid. Possibles values: 'masked', 'unmasked' and 'both'")			
+		return vt
 	}	
 }

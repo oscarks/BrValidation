@@ -1,26 +1,35 @@
 Br Validation
+=============
 
 Implements same validations in grails constraints for units used in application from Brazil: CPF, CNPJ and CEP.
 CPF - Cadastro de Pessoa Física (like a Security Social Numeber in USA)
 CNPJ - Cadastro Nacional de Pessoa Juridica 
 CEP - Postal Code to Brazilian territory
-========================================================================
-* Install
+
+Install
+-------
 
 In command line:
-	grails install-plugin br-validation
+
+```
+grails install-plugin br-validation
+```
 
 or add the dependency to BuildConfig:
 
-    dependencies {
-        // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
+```groovy
+dependencies {
+	// specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
 	runtime 'org.grails.plugins:br-validation:0.2'
-    }
-========================================================================
-* Usage
+}
+```
+
+Usage
+-----
 
 In domain class add constaints to CEP, CPF and CNPJ fields. Ex.:
 
+```groovy
 class PessoaFisica {
 	String nome
 	Date dataNascimento
@@ -29,7 +38,9 @@ class PessoaFisica {
 		cpf cpf:true
 	}
 }
+```
 
+```groovy
 class PessoaJuridica {
 	String nome
 	String razaoSocial
@@ -38,8 +49,22 @@ class PessoaJuridica {
 		cnpj cnpj:true
 	}
 }
-========================================================================
-* Configuration
+
+```
+
+```groovy
+class Pessoa {
+	String nome	
+	String cpfCnpj
+	static constraints {
+		cpfCnpj cpfcnpj: true
+	}
+}
+
+```
+
+Configuration
+-------------
 
 The CPF and CNPJ validated by BrValidation can have two formats: with and without mark characters (mask):
 
@@ -51,21 +76,26 @@ Without Mask:
 	CNPJ: 74053840000159
 
 The way that will be used to validate is configured in Config.groovy. Add the following entry:
-
-	grails.plugins.brValidation.validation.type=[masked|unmasked|both]
+```
+grails.plugins.brValidation.validation.type=[masked|unmasked|both]
+```
 
 then, if you define:
-
-	grails.plugins.brValidation.validation.type=masked
+```
+grails.plugins.brValidation.validation.type=masked
+```
 
 the BrValidation will consider a valid CPF or CNPJ when they has mask. In the same way if unmasked is configured only unmasked data will pass in validation. 
 If both is configured, boths, masked and unmasked data is validated.
  
-========================================================================
-* Tag Lib
+
+Tag Lib
+-------
 
 Now the BrValidation has a tag to format unmasked data to render masked one. For this use the tag bellow in gsp files:
 
+```html
 <g:formatCpf cpf="${personInstance.cpf"/>
+```
 
 

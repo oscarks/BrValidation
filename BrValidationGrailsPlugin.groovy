@@ -1,3 +1,10 @@
+import grails.plugins.brvalidation.constraint.CepConstraint
+import grails.plugins.brvalidation.constraint.CnpjConstraint
+import grails.plugins.brvalidation.constraint.CpfCnpjConstraint
+import grails.plugins.brvalidation.constraint.CpfConstraint
+
+import org.codehaus.groovy.grails.validation.ConstrainedProperty
+
 /*
  * Copyright (c) 2012 the original author or authors.
  *
@@ -14,10 +21,6 @@
  * limitations under the License.
  */
 
-import grails.plugins.brvalidation.constraints.CnpjConstraint
-import grails.plugins.brvalidation.constraints.CpfConstraint
-import grails.plugins.brvalidation.constraints.CepConstraint
-import org.codehaus.groovy.grails.validation.ConstrainedProperty
 
  /**
   * BrValidation Plugin. Implements gorm validation to same documents 
@@ -28,15 +31,15 @@ import org.codehaus.groovy.grails.validation.ConstrainedProperty
   */
 class BrValidationGrailsPlugin {
     // the plugin version
-    def version = "0.2"
+    def version = "0.3"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "1.1.1 > *"
     // the other plugins this plugin depends on
     def dependsOn = [:]
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
-        "grails-app/views/error.gsp"
-    ]
+		'grails-app/domain/**'
+	]
 
     // TODO Fill in these fields
     def title = "Br Validation Plugin" // Headline display name of the plugin
@@ -71,9 +74,10 @@ class BrValidationGrailsPlugin {
     }
 
     def doWithSpring = {
-		ConstrainedProperty.registerNewConstraint(CnpjConstraint.CNPJ_CONSTRAINT,CnpjConstraint.class);
-		ConstrainedProperty.registerNewConstraint(CpfConstraint.CPF_CONSTRAINT,CpfConstraint.class);
-		ConstrainedProperty.registerNewConstraint(CepConstraint.POSTAL_CODE_CONSTRAINT,CepConstraint.class);
+		ConstrainedProperty.registerNewConstraint(CpfCnpjConstraint.CPF_CNPJ_CONSTRAINT, CpfCnpjConstraint.class)
+		ConstrainedProperty.registerNewConstraint(CnpjConstraint.CNPJ_CONSTRAINT,CnpjConstraint.class)
+		ConstrainedProperty.registerNewConstraint(CpfConstraint.CPF_CONSTRAINT,CpfConstraint.class)
+		ConstrainedProperty.registerNewConstraint(CepConstraint.POSTAL_CODE_CONSTRAINT,CepConstraint.class)
     }
 
     def doWithDynamicMethods = { ctx ->
@@ -81,7 +85,7 @@ class BrValidationGrailsPlugin {
     }
 
     def doWithApplicationContext = { applicationContext ->
-        // TODO Implement post initialization spring config (optional)
+        // TODO Implement post initialization spring config (optional)		
     }
 
     def onChange = { event ->
