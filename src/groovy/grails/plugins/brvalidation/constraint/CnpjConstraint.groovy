@@ -16,8 +16,6 @@
 
 package grails.plugins.brvalidation.constraint
 
-import org.springframework.validation.Errors
-
 /**
  * Add CPF validation to gorm constraints
  *
@@ -29,15 +27,13 @@ import org.springframework.validation.Errors
  * 28/08/2012 - version 0.2
  *		Added configuration of validation type (with and/ou without mask)
  */
+class CnpjConstraint extends CpfCnpjConstraint {
 
-
-public class CnpjConstraint extends CpfCnpjConstraint {
-	
 	def verifyType() {
 		return CNPJ_CONSTRAINT
 	}
-	
+
 	String getName() {
-		return CNPJ_CONSTRAINT;
+		return CNPJ_CONSTRAINT
 	}
 }
