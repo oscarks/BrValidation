@@ -13,7 +13,8 @@ Add the dependency to BuildConfig:
 
 ```groovy
 dependencies {
-	runtime 'org.grails.plugins:br-validation:0.2'
+	// specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
+	runtime 'org.grails.plugins:br-validation:0.3'
 }
 ```
 

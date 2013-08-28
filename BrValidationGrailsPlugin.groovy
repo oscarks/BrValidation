@@ -29,29 +29,58 @@ import org.codehaus.groovy.grails.validation.ConstrainedProperty
  * @author Oscar Konno Sampaio (oscarks@gmail.com)
  */
 class BrValidationGrailsPlugin {
-	def version = "0.3"
-	def grailsVersion = "1.1.1 > *"
-	def pluginExcludes = [
+
+    def version = "0.3"
+    def grailsVersion = "1.1.1 > *"
+    def dependsOn = [:]
+	   
+    def pluginExcludes = [
 		'grails-app/domain/**'
 	]
 
-	def title = "Br Validation Plugin"
-	def description = '''Implements gorm validation to same documents
-(CPF and CNPJ) and codes formats (CEP) used in Brazil
+    def title = "Br Validation Plugin" // Headline display name of the plugin
+    def author = "Oscar Konno Sampaio"
+    def authorEmail = "oscarks@gmail.com"
+    def description = '''Implements gorm validation to same documents 
+(CPF and CNPJ) and codes formats (CEP) used in Brazil 
 '''
+    def documentation = "http://grails.org/plugin/br-validation"
 
-	def documentation = "http://grails.org/plugin/br-validation"
-
-	def license = "APACHE"
-	def organization = [ name: "Acception", url: "http://www.acception.com/" ]
-	def developers = [ [ name: "Oscar Konno Sampaio", email: "oscarks@gmail.com" ]]
+    def license = "APACHE"
+	
+	def issueManagement = [system: "github", url: "https://github.com/oscarks/BrValidation/issues"]
+	def scm = [ url: "https://github.com/oscarks/BrValidation" ]
+    def developers = [ 
+		[ name: "Oscar Konno", email: "oscarks@gmail.com" ],
+		[ name: "Leandro G. Gehlen", email: "leandrogehlen@gmail.com" ]
+	]
+    // Location of the plugin's issue tracker.
 	def issueManagement = [ system: "GITHUB", url: "https://github.com/oscarks/BrValidation/issues" ]
+    // Online location of the plugin's browseable source code.
 	def scm = [ url: 'https://github.com/oscarks/BrValidation']
+    
+    def doWithWebDescriptor = { xml ->
+        // TODO Implement additions to web.xml (optional), this event occurs before
+    }
 
-	def doWithSpring = {
-		ConstrainedProperty.registerNewConstraint(CpfCnpjConstraint.CPF_CNPJ_CONSTRAINT, CpfCnpjConstraint)
-		ConstrainedProperty.registerNewConstraint(CnpjConstraint.CNPJ_CONSTRAINT,CnpjConstraint)
-		ConstrainedProperty.registerNewConstraint(CpfConstraint.CPF_CONSTRAINT,CpfConstraint)
-		ConstrainedProperty.registerNewConstraint(CepConstraint.POSTAL_CODE_CONSTRAINT,CepConstraint)
-	}
+    def doWithSpring = {
+		ConstrainedProperty.registerNewConstraint(CpfCnpjConstraint.CPF_CNPJ_CONSTRAINT, CpfCnpjConstraint.class)
+		ConstrainedProperty.registerNewConstraint(CnpjConstraint.CNPJ_CONSTRAINT,CnpjConstraint.class)
+		ConstrainedProperty.registerNewConstraint(CpfConstraint.CPF_CONSTRAINT,CpfConstraint.class)
+		ConstrainedProperty.registerNewConstraint(CepConstraint.POSTAL_CODE_CONSTRAINT,CepConstraint.class)
+    }
+
+    def doWithDynamicMethods = { ctx ->
+        // TODO Implement registering dynamic methods to classes (optional)
+    }
+
+    def doWithApplicationContext = { applicationContext ->
+        // TODO Implement post initialization spring config (optional)		
+    }
+
+    def onChange = { event ->
+        // TODO Implement code that is executed when any artefact that this plugin is
+        // watching is modified and reloaded. The event contains: event.source,
+        // event.application, event.manager, event.ctx, and event.plugin.
+    }
 }
