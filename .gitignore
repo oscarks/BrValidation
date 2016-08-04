@@ -17,3 +17,13 @@
 /plugin.xml
 
 /web-app
+
+# Intellij
+/*.iml
+/.idea/
+
+# Grails 3
+/build/
+
+# Gradle
+/.gradle/

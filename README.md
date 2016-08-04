@@ -92,4 +92,19 @@ Now the BrValidation has a tag to format unmasked data to render masked one. For
 <g:formatCpf cpf="${personInstance.cpf"/>
 ```
 
+Grails 3
+-------
 
+Compile and install local repository:
+```
+grails clean
+grails package-plugin
+grails install
+```
+Install on another grails project:
+edit build.gradle
+```groovy
+dependencies {
+	runtime 'org.grails.plugins:BrValidation:0.3'
+}
+```

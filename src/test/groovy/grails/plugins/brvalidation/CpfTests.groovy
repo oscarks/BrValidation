@@ -2,8 +2,7 @@ package grails.plugins.brvalidation
 
 import grails.plugins.brvalidation.constraint.CpfConstraint
 import grails.test.mixin.TestFor
-
-import org.codehaus.groovy.grails.validation.ConstrainedProperty
+import grails.validation.ConstrainedProperty
 import org.junit.BeforeClass
 
 @TestFor(Person)
