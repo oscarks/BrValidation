@@ -23,17 +23,17 @@ import org.codehaus.groovy.grails.validation.ConstrainedProperty
 
 
  /**
-  * BrValidation Plugin. Implements gorm validation to same documents 
-  * (CPF and CNPJ) and codes formats (CEP) used in Brazil 
+  * BrValidation Plugin. Implements gorm validation to same documents
+  * (CPF and CNPJ) and codes formats (CEP) used in Brazil
   *
   * @author Oscar Konno Sampaio (oscarks@gmail.com)
   * @since 0.1
   */
 class BrValidationGrailsPlugin {
-    def version = "0.3"
+    def version = "0.4"
     def grailsVersion = "1.1.1 > *"
     def dependsOn = [:]
-	   
+
     def pluginExcludes = [
 		'grails-app/domain/**'
 	]
@@ -41,17 +41,17 @@ class BrValidationGrailsPlugin {
     def title = "Br Validation Plugin" // Headline display name of the plugin
     def author = "Oscar Konno Sampaio"
     def authorEmail = "oscarks@gmail.com"
-    def description = '''Implements gorm validation to same documents 
-(CPF and CNPJ) and codes formats (CEP) used in Brazil 
+    def description = '''Implements gorm validation to same documents
+(CPF and CNPJ) and codes formats (CEP) used in Brazil
 '''
     def documentation = "http://grails.org/plugin/br-validation"
 
     def license = "APACHE"
-	
+
 	def issueManagement = [system: "github", url: "https://github.com/oscarks/BrValidation/issues"]
 	def scm = [ url: "https://github.com/oscarks/BrValidation" ]
-       
-    def developers = [ 
+
+    def developers = [
 		[ name: "Oscar Konno", email: "oscarks@gmail.com" ],
 		[ name: "Leandro G. Gehlen", email: "leandrogehlen@gmail.com" ]
 	]
@@ -78,7 +78,7 @@ class BrValidationGrailsPlugin {
     }
 
     def doWithApplicationContext = { applicationContext ->
-        // TODO Implement post initialization spring config (optional)		
+        // TODO Implement post initialization spring config (optional)
     }
 
     def onChange = { event ->
