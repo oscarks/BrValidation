@@ -11,7 +11,7 @@ class FormatTagLib {
 	 */
 	def formatCpf = { attrs->
 		def cpf=attrs.cpf
-		processCnpj(cpf,out)
+		processCpf(cpf,out)
 	}
 
 	/**
