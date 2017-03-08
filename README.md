@@ -3,7 +3,7 @@ Br Validation
 
 Implements same validations in grails constraints for units used in application from Brazil: CPF, CNPJ and CEP.
 CPF - Cadastro de Pessoa Física (like a Security Social Numeber in USA)
-CNPJ - Cadastro Nacional de Pessoa Juridica 
+CNPJ - Cadastro Nacional de Pessoa Juridica
 CEP - Postal Code to Brazilian territory
 
 Install
@@ -54,7 +54,7 @@ class PessoaJuridica {
 
 ```groovy
 class Pessoa {
-	String nome	
+	String nome
 	String cpfCnpj
 	static constraints {
 		cpfCnpj cpfcnpj: true
@@ -85,9 +85,9 @@ then, if you define:
 grails.plugins.brValidation.validation.type=masked
 ```
 
-the BrValidation will consider a valid CPF or CNPJ when they has mask. In the same way if unmasked is configured only unmasked data will pass in validation. 
+the BrValidation will consider a valid CPF or CNPJ when they has mask. In the same way if unmasked is configured only unmasked data will pass in validation.
 If both is configured, boths, masked and unmasked data is validated.
- 
+
 
 Tag Lib
 -------
@@ -95,7 +95,9 @@ Tag Lib
 Now the BrValidation has a tag to format unmasked data to render masked one. For this use the tag bellow in gsp files:
 
 ```html
-<g:formatCpf cpf="${personInstance.cpf"/>
+<g:formatCpf value="${personInstance.cpf"/>
+
+<g:formatCnpj value="${personInstance.cnpj"/>
+
+<g:formatCpfCnpj value="${personInstance.cpfcnpj"/>
 ```
-
-

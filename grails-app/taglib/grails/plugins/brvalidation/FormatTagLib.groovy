@@ -6,33 +6,33 @@ class FormatTagLib {
 	/**
 	 * Format a CPF value with the mask 999.999.999-99
 	 *
-	 * @attr cpf REQUIRED the cpf value
+	 * @attr value REQUIRED the cpf value
 	 * @attr unknow character to be used when the CPF is not informed
 	 */
 	def formatCpf = { attrs->
-		def cpf=attrs.cpf
+		def cpf = attrs.value
 		processCpf(cpf,out)
 	}
 
 	/**
 	 * Format a CNPJ value with the mask 99.999.999/9999-99
 	 *
-	 * @attr cnpj REQUIRED the cnpj value
+	 * @attr value REQUIRED the cnpj value
 	 * @attr unknow character to be used when the CPF is not informed
 	 */
 	def formatCnpj = { attrs->
-		def cnpj=attrs.cnpj
+		def cnpj = attrs.value
 		processCnpj(cnpj,out)
 	}
 
 	/**
 	 * Format a CNPJ value with the mask 99.999.999/9999-99
 	 *
-	 * @attr cnpj REQUIRED the cnpj value
+	 * @attr value REQUIRED the cpf ou cnpj value
 	 * @attr unknow character to be used when the CPF is not informed
 	 */
 	def formatCpfCnpj = { attrs->
-		def cpfcnpj=attrs.cpfcnpj
+		def cpfcnpj = attrs.value
 		if(cpfcnpj?.toString().size()==14){
 			processCnpj(cpfcnpj,out)
 
