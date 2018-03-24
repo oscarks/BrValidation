@@ -89,7 +89,9 @@ Tag Lib
 Now the BrValidation has a tag to format unmasked data to render masked one. For this use the tag bellow in gsp files:
 
 ```html
-<g:formatCpf cpf="${personInstance.cpf"/>
+<g:formatCpf value="${personInstance.cpf"/>
+
+<g:formatCnpj value="${personInstance.cnpj"/>
+
+<g:formatCpfCnpj value="${personInstance.cpfcnpj"/>
 ```
-
-
